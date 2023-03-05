@@ -1,0 +1,72 @@
+.responsive-svg-container {
+  margin: auto;
+  width: 100%;
+  max-width: 800px;
+}
+
+.brush-background {
+  fill: #ddd;
+  stroke: #999;
+  stroke-width: 1px;
+  opacity: 0.5;
+}
+
+.brush .selection {
+  fill: steelblue;
+  opacity: 0.3;
+}
+
+.brush .handle {
+  fill: steelblue;
+}
+
+body {
+  color: #1f1f1f;
+  background-color: #fff;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  font-size: 48px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 50px;
+  font-family: 'Press Start 2P', cursive;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  color: #FFB700;
+  text-shadow: 2px 2px 0 #000;
+}
+
+.overview-container {
+  font-size: 14px;
+  margin: 20px;
+  padding: 10px;
+  background-color: #ffffb3;
+  font-family: 'Titillium Web', sans-serif;
+  border-radius: 5px;
+  line-height: 1.5;
+}
+
+.title-container {
+  font-size: 14px;
+  margin: 0px 20px 20px 20px;
+  padding: 10px;
+  background-color: #8dd3c7;
+  font-family: 'Titillium Web', sans-serif;
+  font-weight: bold;
+  border-radius: 5px;
+  line-height: 1.5;
+}
+
+.sort-input-container {
+  float: right;
+}
+
+#bar {
+  padding: 20px;
+}
+
+#yearText {
+  width: 40px
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Video Games Sales | D3.js Tutorial</title>
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+
+<body>
+	<h1>Video games statistics visualization!</h1>
+	<div class="overview-container">
+		<div>The dataset obtained from Kaggle, includes sales statistics and platforms for a variety of games. This
+			depiction focuses on the popularity evolution of various gaming genres over time. We can determine which
+			game
+			genres have experienced the greatest increase and which have experienced a fall in popularity by examining
+			the
+			sales statistics from various years.</div>
+		<div>Whether you're an experienced pro or a casual gamer, our data visualization offers insightful information
+			about the changing trends in the video game business. Why not investigate the statistics for yourself and
+			learn
+			which gaming subgenres have endured?</div>
+	</div>
+	<div class="title-container">
+		<div>Title 1</div> <!-- TODO -->
+	</div>
+
+	<div class="responsive-svg-container" id="form">
+		<label for="yearSlider">Year</label>
+		<input id="yearSlider" type="range" value="2006" min="1980" max="2016" />
+		<input id="yearText" type="text" value="2006" min="1980" max="2016" disabled />
+
+		<div class="sort-input-container">
+			<label for="sort">Sort genre by</label>
+			<select name="sort" id="select-sort-function">
+				<option value="alphabet" selected>Alphabetical</option>
+				<option value="countAsc">Count, ascending</option>
+				<option value="countDsc">Count, descending</option>
+			</select>
+		</div>
+	</div>
+	<div id="bar" class="responsive-svg-container"></div>
+
+	<div class="title-container">
+		<div>Title 2</div> <!-- TODO -->
+	</div>
+
+	<div id="pie" class="responsive-svg-container"></div>
+
+	<script src="https://d3js.org/d3.v7.min.js"></script>
+	<script type="module" src="js/main.js"></script>
+	<script type="module" src="js/barChart.js"></script>
+	<script type="module" src="js/nestedPie.js"></script>
+</body>
+
+</html>
