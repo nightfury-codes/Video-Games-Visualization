@@ -1,5 +1,5 @@
 const majorPlaforms = ['PS2', 'X360', 'PS3', 'Wii', 'DS', 'PS', 'GBA', 'PSP', 'PS4', 'PC'];
-const minorGenres = ['Misc', 'Simulation', 'Puzzle', 'Adventure', 'Strategy', 'Platform']
+const minorGenres = ['Puzzle', 'Strategy', 'Adventure']
 
 export default function barChart() {
     d3.csv("data/Video-Game-Sales-Updated-Data.csv", d => {
@@ -154,7 +154,7 @@ const makeHierarchy = (config) => {
 const partition = data => {
     const root = makeHierarchy({
         data,
-        groupByFns: [d => d.platform, d => d.genre, d => d.publisher],
+        groupByFns: [d => d.genre, d => d.platform, d => d.publisher],
         reduceFn: v => d3.fsum(v, d => d.totalsales)
     });
     return d3.partition()
