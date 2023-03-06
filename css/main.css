@@ -38,6 +38,18 @@ h1 {
   text-shadow: 2px 2px 0 #000;
 }
 
+h2 {
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 10px;
+  font-family: 'Press Start 2P', cursive;
+  text-transform: uppercase;
+  letter-spacing: 7px;
+  color: #FFB700;
+  text-shadow: 2px 2px 0 #000;
+}
+
 .overview-container {
   font-size: 12px;
   font-weight: bold;
