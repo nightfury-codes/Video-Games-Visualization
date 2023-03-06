@@ -80,7 +80,7 @@ const getScales = (data, svg) => {
 
     svg.select('.x-axis').remove();
     svg.select('.y-axis').remove();
-    
+
     // Add axes to SVG
     svg.append('g')
         .attr('class', 'x-axis')
@@ -98,7 +98,7 @@ const getScales = (data, svg) => {
 const formatData = (data) => {
     const filteredData = selectedYear !== 0 ? data.filter(d => d.year == selectedYear) : data;
     const groupData = d3.rollup(filteredData,
-        genrecount => ({count: genrecount.length}),
+        genrecount => ({ count: genrecount.length }),
         y => y.year,
         g => g.genre
     );
@@ -130,6 +130,10 @@ const updateChart = (data, svg) => {
     const bars = svg.selectAll('.genrebar').data(filteredData[0].genreCounts);
     bars.exit().remove();
 
+
+    // select all existing text elements with class 'barlabel' and remove them
+    d3.selectAll('.barlabel').remove();
+
     // Update bars
     bars.enter()
         .append('rect')
@@ -138,8 +142,7 @@ const updateChart = (data, svg) => {
         .attr('y', yScale(0))
         .attr('width', xScale.bandwidth())
         .attr('height', 0)
-        .attr('fill', '#00bfff')
-        .attr('stroke', 'white')
+        .attr('stroke', 'gray')
         .attr('stroke-width', 2)
         .attr('stroke-opacity', 0.5)
         .style('filter', 'drop-shadow(0 0 5px #fff)')
@@ -150,14 +153,27 @@ const updateChart = (data, svg) => {
         .attr('y', d => yScale(d.count))
         .attr('width', xScale.bandwidth())
         .attr('height', d => Math.max(0, height - yScale(d.count)))
-        .attr('fill', '#00bfff')
-        .attr('stroke', 'white')
+        .attr('fill', '#9EC1A3') // pastel green
+        .attr('stroke', 'gray')
         .attr('stroke-width', 2)
         .attr('stroke-opacity', 0.5)
         .style('filter', 'drop-shadow(0 0 5px #fff)')
         .attr('rx', 0)
         .attr('ry', 0)
-        .attr('transform', 'none');
+        .attr('transform', 'none')
+        .each(function (d) {
+            // append a text element to the bar for the height value
+            d3.select(this.parentNode)
+                .append('text')
+                .attr('class', 'barlabel')
+                .attr('x', xScale(d.genre) + xScale.bandwidth() / 2)
+                .attr('y', yScale(d.count) - 5)
+                .attr('text-anchor', 'middle')
+                .text(d.count)
+                .transition()
+                .delay(500)
+                .style('opacity', 1)
+        });
 
 }
 
@@ -176,11 +192,22 @@ const createBarChart = (data, svg) => {
         .attr('width', xScale.bandwidth())
         .attr('height', d => height - yScale(d.count))
         // .attr('height', d => height-yScale(Number(d[1])))
-        .attr('fill', '#00bfff')
-        .attr('stroke', 'white')
+        .attr('fill', '#9EC1A3')
+        .attr('stroke', 'gray')
         .attr('stroke-width', 2)
         .attr('stroke-opacity', 0.5)
-        .style('filter', 'drop-shadow(0 0 5px #fff)');
+        .style('filter', 'drop-shadow(0 0 5px #fff)')
+        .each(function (d) {
+            // append a text element to the bar for the height value
+            d3.select(this.parentNode)
+                .append('text')
+                .attr('class', 'barlabel')
+                .attr('x', xScale(d.genre) + xScale.bandwidth() / 2)
+                .attr('y', yScale(d.count) - 5)
+                .attr('text-anchor', 'middle')
+                .text(d.count)
+                .style('opacity', 1)
+        });
 };
 
 const setInputField = (element) => {
