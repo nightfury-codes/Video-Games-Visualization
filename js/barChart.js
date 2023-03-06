@@ -70,12 +70,13 @@ const getScales = (data, svg) => {
         .attr("text-anchor", "end")
         .text("Genre →");
     const yLabel = g => g.append("text")
-        .attr("x", -margin.left + 30)
-        .attr("y", 0)
+        .attr("x", -margin.left - 190)
+        .attr("y", margin.bottom - 100)
         .attr("font-weight", "bold")
         .attr("fill", "currentColor")
         .attr("text-anchor", "start")
-        .text("↑ Count");
+        .attr("transform", "rotate(-90)")
+        .text("↑ No. of Games in a genre making it to high sales");
 
     svg.select('.x-axis').remove();
     svg.select('.y-axis').remove();
