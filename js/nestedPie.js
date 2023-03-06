@@ -1,4 +1,4 @@
-const majorPlaforms = ['PS2', 'X360', 'PS3', 'Wii', 'DS', 'PS', 'GBA', 'PSP', 'PS4', 'PC'];
+const majorPlaforms = ['PS2', 'X360', 'PS3', 'Wii', 'DS', 'PS', 'GBA', 'PSP', 'PS4', 'PC', 'XB', 'GB', 'NES', '3DS','N64','SNES' ];
 const minorGenres = ['Puzzle', 'Strategy', 'Adventure']
 
 export default function barChart() {
@@ -6,6 +6,7 @@ export default function barChart() {
         return {
             rank: +d.Rank,
             gameName: d.Name,
+            //platform:d.Platform,
             platform: majorPlaforms.includes(d.Platform) ? d.Platform : 'Others',
             year: +d.Year,
             genre: !minorGenres.includes(d.Genre) ? d.Genre : 'Others',
@@ -154,7 +155,7 @@ const makeHierarchy = (config) => {
 const partition = data => {
     const root = makeHierarchy({
         data,
-        groupByFns: [d => d.genre, d => d.platform, d => d.publisher],
+        groupByFns: [d => d.platform, d => d.genre, d => d.publisher],
         reduceFn: v => d3.fsum(v, d => d.totalsales)
     });
     return d3.partition()
