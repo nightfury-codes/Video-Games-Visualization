@@ -98,7 +98,7 @@ const getScales = (data, svg) => {
 const formatData = (data) => {
     const filteredData = selectedYear !== 0 ? data.filter(d => d.year == selectedYear) : data;
     const groupData = d3.rollup(filteredData,
-        genrecount => ({ count: genrecount.length }),
+        genrecount => ({count: genrecount.length}),
         y => y.year,
         g => g.genre
     );
